@@ -20,7 +20,7 @@ const UserDetails = () => {
       <h4>User Details</h4>
       <hr />
       <Container fluid>
-        <div className='form-container'>
+        <div className='formContainer'>
           <form onSubmit={handleSubmit(onSubmit)}>
             <Row>
               <Col xl='6'>

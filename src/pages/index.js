@@ -1,6 +1,6 @@
 import Layout from '../components/Layout'
 import Hero from '../components/Hero'
-import styles from '../styles/Home.module.css'
+import ChooseSection from '../components/ChooseSection'
 import { Container, Navbar, Nav } from 'react-bootstrap'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -49,11 +49,7 @@ export default function Home() {
         </Navbar>
       </header>
       <Hero />
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href='https://nextjs.org'>Optimus pro</a>
-        </h1>
-      </main>
+      <ChooseSection />
     </>
   )
 }

@@ -41,7 +41,7 @@ const SigninPage = () => {
             <div className='signup'>
               <p>Signing up takes less than a minute</p>
 
-              <Link href='/'>
+              <Link href='/signup'>
                 <a className='btn-signup'>Sign up</a>
               </Link>
             </div>
