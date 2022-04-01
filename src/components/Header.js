@@ -14,7 +14,7 @@ const Header = () => {
               <Image src={logo} alt='logo' width='150' height='40' />
             </Navbar.Brand>
           </Link>
-          <Navbar.Toggle aria-controls='responsive-navbar-nav' />
+          <Navbar.Toggle aria-controls='responsive-navbar-nav' className="toggle" />
           <Navbar.Collapse
             id='responsive-navbar-nav'
             className='justify-content-end'

@@ -5,6 +5,8 @@ import { Container, Navbar, Nav } from 'react-bootstrap'
 import Link from 'next/link'
 import Image from 'next/image'
 import logo from '../public/logo.webp'
+import MobileSection from '../components/MobileSection'
+import CardSection from '../components/CardSection'
 
 export default function Home() {
   return (
@@ -50,6 +52,8 @@ export default function Home() {
       </header>
       <Hero />
       <ChooseSection />
+      <MobileSection />
+      <CardSection />
     </>
   )
 }
