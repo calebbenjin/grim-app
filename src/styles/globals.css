@@ -23,7 +23,7 @@ body h1, h2, h3, h4, h5, h6 {
 
 
 .header {
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.4) !important;
   position: fixed;
   left: 0;
   width: 100%;
@@ -943,8 +943,28 @@ select {
     font-size: 1rem;
   }
 
-  header {
-    background: #333 !important;
+
+  .header {
+    background: rgb(255, 255, 255) !important;
+    position: fixed;
+    left: 0;
+    width: 100%;
+    z-index: 9;
+    padding: 0;
+  }
+
+  .header a {
+    color: #333 !important;
+    text-transform: capitalize;
+    font-size: 1.2rem;
+    font-weight: 300;
+    margin-bottom: 2rem !important;
+    text-decoration: none;
+  }
+
+  header .navbar {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
   }
 
   
