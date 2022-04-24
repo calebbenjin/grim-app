@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import Layout from '../components/Layout'
 import Hero from '../components/Hero'
 import ChooseSection from '../components/ChooseSection'
@@ -9,6 +10,22 @@ import MobileSection from '../components/MobileSection'
 import CardSection from '../components/CardSection'
 
 export default function Home() {
+  
+
+  // useEffect(() => {
+  //   const resUser = await fetch(`${API_URL}/users`, {
+  //     method: 'GET',
+  //     headers: {
+  //       ContentType: 'application/json',
+  //       Authorization: `Bearer ${token}`,
+  //     },
+  //   })
+  
+  //   const users = await resUser.json()
+
+  //   console.log(users)
+  // })
+
   return (
     <>
       <header className='header'>

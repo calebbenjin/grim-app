@@ -1,8 +1,11 @@
-import React from 'react'
-import { Container, Navbar, Nav, Button } from 'react-bootstrap'
+import { useState, useContext } from 'react'
+import { Container, Navbar, Nav } from 'react-bootstrap'
 import Link from 'next/link'
+import { AuthContext } from '../context/Authcontext'
 
 const Layout = ({ children }) => {
+  const { logout } = useContext(AuthContext)
+  
   return (
     <>
       <header className="admin-header">
@@ -23,8 +26,8 @@ const Layout = ({ children }) => {
                 <Link href='/admin/message'>
                   <a>Messages</a>
                 </Link>
-                <Link href='/signin'>
-                  <a>Logout</a>
+                <Link href="#">
+                  <a onClick={() => logout()}>Logout</a>
                 </Link>
               </Nav>
             </Navbar.Collapse>

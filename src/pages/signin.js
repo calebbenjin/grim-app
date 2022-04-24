@@ -1,12 +1,25 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import Layout from '../components/Layout'
 import Link from 'next/link'
+import { AuthContext } from '../context/Authcontext'
+import { useForm } from 'react-hook-form'
 
 const SigninPage = () => {
+  const {login, isLoading, isError} = useContext(AuthContext)
   const [showPassword, setShowPassword] = useState(false)
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm()
 
   const handleShowPassword = () => {
     setShowPassword(!showPassword)
+  }
+
+
+  const onSubmit = async (data) => {
+    login(data)
   }
 
   return (
@@ -15,22 +28,26 @@ const SigninPage = () => {
         <div className='form-container'>
           <div className='form'>
             <h3>Login to continue</h3>
-            <form>
+            {isError ? <div className="errorBadge">Incorrect email or password</div> : null}
+            <form onSubmit={handleSubmit(onSubmit)}>
               <div className='input-group'>
                 <label htmlFor='email'>Email</label>
-                <input type='email' placeholder='Your email address' />
+                <input type='email' {...register('email', { required: true })} placeholder='Your email address' />
+                {errors.email && <span>Email field is required</span>}
               </div>
               <div className='input-group'>
                 <label htmlFor='password'>Password</label>
                 <div className='password'>
                   <input
                     type={showPassword ? 'text' : 'password'}
+                    {...register('password', { required: true })}
                     placeholder='Your password'
                   />
                   <span onClick={handleShowPassword}>show</span>
                 </div>
+                {errors.email && <span>Email field is required</span>}
               </div>
-              <button className='login-btn'>Login</button>
+              <button className='login-btn'>{isLoading ? 'Loading...' : 'Login'}</button>
               <p>
                 <a className='forgetPassword' href='#'>
                   Forget password?

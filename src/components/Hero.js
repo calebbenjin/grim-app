@@ -1,17 +1,52 @@
-import { useState } from 'react'
-import { Container } from 'react-bootstrap'
+import { useState, useContext } from 'react'
+import { Spinner } from 'react-bootstrap'
 import Button from './Button'
+import { useForm } from 'react-hook-form'
+import { useRouter } from 'next/router'
+import ResultModal from './ResultModal'
+import SupportModal from './SupportModal'
+import { AuthContext } from '../context/Authcontext'
 
 const Hero = () => {
+  const { check, checkTransfer, isError, showModal, setShowModal, showSupportModal, isLoading,
+    setIsLoading } = useContext(AuthContext)
   const [trackFormBtn, setTrackFormBtn] = useState(true)
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm()
+
+  const router = useRouter()
+
+  const handlePayment = () => {
+    if (checkTransfer?.isPaid === true) {
+      router.push('/signin')
+    } else {
+      setShowModal(false)
+      setShowSupportModal(true)
+    }
+  }
 
   const handleToggle = () => {
     setTrackFormBtn(false)
   }
 
+
+  const onSubmit = async (data) => {
+    check(data)
+  }
+
   return (
     <div className='hero'>
-      <div className="container">
+      <div className='container'>
+        {showSupportModal ? <SupportModal /> : null}
+        <ResultModal
+          show={showModal}
+          onClose={() => setShowModal(false)}
+          data={checkTransfer}
+          handlePayment={handlePayment}
+        />
         <div className='heroFlex'>
           <div className='content'>
             <h1>How to send money with WorldRemit</h1>
@@ -22,6 +57,7 @@ const Hero = () => {
               Europe.
             </p>
           </div>
+
           <div className='trackForm'>
             <div className='trackFormContainer'>
               <div className='formHeader'>
@@ -40,21 +76,51 @@ const Hero = () => {
               </div>
               {trackFormBtn ? (
                 <div className='formBody track'>
-                  <form>
+                  <form onSubmit={handleSubmit(onSubmit)}>
                     <p>
                       Enter the required information below to see if your money
                       is available.
                     </p>
+                    
+                    {isError ? <div className="errorBadge">Incorrenct Reference Number or Email</div> : null}
                     <div className='formControl'>
                       <label htmlFor='name'>REF/AUTH NUMBER</label>
-                      <input type='text' />
+                      <input
+                        type='text'
+                        {...register('referenceNum', { required: true })}
+                      />
+                      {errors.referenceNum && (
+                        <small>
+                          Authorization or Reference # must contain at least 8
+                          characters.
+                        </small>
+                      )}
                     </div>
                     <div className='formControl'>
-                      <label htmlFor='name'>YOUR LAST NAME</label>
-                      <input type='text' />
+                      <label htmlFor='email'>YOUR EMAIL</label>
+                      <input
+                        type='email'
+                        {...register('email', { required: true })}
+                      />
+                      {errors.email && <small>Last email is required</small>}
                     </div>
                     <div className='formBtn trackBtn'>
-                      <Button>Track Your Money</Button>
+                      <Button>
+                        {isLoading ? (
+                          <>
+                            <Spinner
+                              as='span'
+                              animation='grow'
+                              size='sm'
+                              role='status'
+                              aria-hidden='true'
+                            />{' '}
+                            Checking...
+                          </>
+                        ) : (
+                          'Track Your Money'
+                        )}
+                      </Button>
                     </div>
                   </form>
                 </div>

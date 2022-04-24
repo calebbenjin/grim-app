@@ -1,10 +1,10 @@
-import React from 'react'
 import { Container, Navbar, Nav, Button } from 'react-bootstrap'
 import Link from 'next/link'
 import Image from 'next/image'
 import logo from '../public/logo2.svg'
 
 const Header = () => {
+
   return (
     <header className='main-header'>
       <Navbar collapseOnSelect expand='lg' bg='light' variant='light'>

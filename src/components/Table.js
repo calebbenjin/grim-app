@@ -1,25 +1,33 @@
-import React from 'react'
+import {useEffect} from 'react'
 import Link from 'next/link'
+import { parseCookies } from '../config/parseCookies'
+import { NEXT_URL, API_URL } from '../config/index'
 
-const Table = ({ data, path }) => {
+const Table = ({ data, path, token }) => {
 
-  const handelDelete = (id) => {
+  const handelDelete = async (id) => {
     if (confirm('Are you sure you want to delete this user')) {
-      console.log('This user is deleted');
+      const res = await fetch(`${API_URL}/user/${id}`, {
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+
+      const data = await res.json()
     } else {
       console.log('This user is not deleted');
     }
   }
 
   return (
-    <table className='styled-table'>
+    <table className='styled-table user-table'>
       <thead>
         <tr>
           <th>S/N</th>
-          <th>Name</th>
+          <th>First Name</th>
+          <th>Last Name</th>
           <th>Email</th>
-          <th>Amount</th>
-          <th>Password</th>
           <th>Reference Num</th>
           <th>voulcher num</th>
           <th>Tax code</th>
@@ -27,27 +35,46 @@ const Table = ({ data, path }) => {
         </tr>
       </thead>
       <tbody>
-        {data.map((user) => (
-          <tr key={user.id}>
-            <td>{user.id}</td>
-            <td>{user.name}</td>
+        {data.map((user, index) => (
+          <tr key={user._id}>
+            <td>{index}</td>
+            <td>{user.firstname}</td>
+            <td>{user.lastname}</td>
             <td>{user.email}</td>
-            <td>{user.amount}</td>
-            <td>{user.password}</td>
             <td>{user.referenceNum}</td>
             <td>{user.voulcherNum}</td>
-            <td>{user.taxCode}</td>
+            <td>{user.taskCode}</td>
             <td>
-              <Link href={`${path}/${user.id}`}>
+              <Link href={`${path}/${user._id}`}>
                 <button className='edit'>Edit</button>
               </Link>
-              <button onClick={() => handelDelete(user.id)} className='delete'>Delete</button>
+              <button onClick={() => handelDelete(user._id)} className='delete'>Delete</button>
             </td>
           </tr>
         ))}
       </tbody>
     </table>
   )
+}
+
+
+export async function getServerSideProps({ req, query: { id } }) {
+  const { token } = parseCookies(req)
+
+  if (!token) {
+    return {
+      redirect: {
+        destination: '/signin',
+        permanent: false,
+      },
+    }
+  }
+
+  return {
+    props: {
+      token: token,
+    },
+  }
 }
 
 export default Table

@@ -17,7 +17,7 @@ a {
 }
 
 body h1, h2, h3, h4, h5, h6 {
-  text-transform: inherit;
+  text-transform: inherit !important;
 }
 
 
@@ -54,6 +54,35 @@ body h1, h2, h3, h4, h5, h6 {
 
 .btnStyle:hover {
   color: #fff;
+}
+
+.account-header {
+  background: #fff !important;
+  padding: 1rem 0;
+}
+
+.account-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.account-header  a{
+  color: #333;
+  text-decoration: none;
+}
+
+.account-header .profile {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 0 !important;
+
+}
+
+.account-header .logo {
+  color: #333;
+  margin-top: 0.6rem;
+  font-weight: 900;
 }
 
 .admin-header a {
@@ -126,7 +155,7 @@ body h1, h2, h3, h4, h5, h6 {
 }
 
 .heroFlex {
-  width: 80%;
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 20px;
@@ -227,6 +256,11 @@ body h1, h2, h3, h4, h5, h6 {
   color: #9c9c9c;
 }
 
+form small {
+  color: red;
+  font-size: 0.7rem;
+}
+
 .track input {
   width: 100%;
   border: none;
@@ -243,7 +277,7 @@ body h1, h2, h3, h4, h5, h6 {
   color: #9c9c9c;
 }
 
-.formBody label {
+form label {
   font-weight: 600;
   font-size: 0.8rem;
   color: #333;
@@ -271,6 +305,10 @@ body h1, h2, h3, h4, h5, h6 {
   border-radius: 30px;
 }
 
+textarea {
+  margin: none!important;
+}
+
 .display-container {
   display: flex;
   align-items: center;
@@ -291,6 +329,8 @@ body h1, h2, h3, h4, h5, h6 {
 
 .form {
   border: solid 1px #cccc;
+  background: #fff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
   padding: 2rem;
   width: 100%;
   border-radius: 6px;
@@ -431,6 +471,9 @@ body h1, h2, h3, h4, h5, h6 {
 .styled-table tbody tr:nth-of-type(even) {
   background-color: #f3f3f3;
 }
+.user-table tbody tr:nth-child(1) {
+  display: none;
+}
 
 .styled-table tbody tr:last-of-type {
   border-bottom: 2px solid #009879;
@@ -446,12 +489,13 @@ body h1, h2, h3, h4, h5, h6 {
   margin-top: 3rem;
   padding: 3rem;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  background: #fff;
 }
 
 .message-form form input, form textarea {
   width: 100%;
-  margin-bottom: 1.5rem;
-  margin-top: 0.5rem;
+  /* margin-bottom: 1.5rem;
+  margin-top: 0.5rem; */
   padding: 15px;
   border-radius: 10px;
   border: solid 1px #ccc;
@@ -475,17 +519,9 @@ form textarea {
   padding: 15px 30px;
   border: none;
   background: #813fd6;
-  border-radius: 10px;
+  border-radius: 4px;
   color: #fff;
   font-weight: 600;
-}
-
-.formContainer {
-  width: 60%;
-  padding: 3rem;
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-  margin: 3rem auto;
 }
 
 .formControl {
@@ -530,7 +566,307 @@ form textarea {
 }
 
 
+.modal-heading {
+  border-bottom: solid 1px #ccc;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.modal-heading h5 {
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+
+.modal-heading h4 {
+  font-size: 1.2rem;
+  color: green;
+  font-weight: 700;
+  text-transform: inherit;
+}
+
+.modal-heading .icon {
+  font-size: 2rem;
+  color: green;
+  margin-bottom: 1rem;
+}
+
+.userDetails {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.userDetails .listFlex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+
+.userDetails .listFlex p{
+  font-size: 0.9rem;
+  margin: 0 !important;
+}
+
+.listFlex .list {
+  font-weight: 900;
+  font-size: 0.7rem !important;
+  text-transform: uppercase;
+}
+
+.agent-charge {
+  font-weight: 800;
+}
+
+.proceedBtn {
+  background: #813fd6;
+  width: 70%;
+  margin: 1rem auto;
+  font-size: 0.9rem;
+  color: #fff;
+  padding: 15px 10px;
+  border-radius: 10px;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 900;
+  border: none;
+}
+
+
+.modalWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9;
+  overflow-y: hidden;
+  background: rgba(1, 5, 11, 0.732);
+  backdrop-filter: blur(5px);
+  transition: 0.9s all ease;
+}
+
+.hideModal {
+  position: fixed !important;
+  display: none;
+  transition: 0.9s all ease;
+}
+
+
+.modalbody {
+  position: relative !important;;
+  top: 0;
+  background: #fff;
+  border-radius: 4px;
+  transition: 0.8s all ease;
+  box-shadow: 0 0 20px rgba(231, 231, 231, 0.776);
+  width: 35%;
+  height: auto;
+  padding:  2rem 1rem;
+  z-index: 9;
+  overflow-y: auto;
+  opacity: 9;
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+}
+
+@keyframes animatetop {
+  from {top: -300px; opacity: 0}
+  to {top: 0; opacity: 1}
+}
+
+.modalbody .closeBtn {
+  text-align: right;
+  cursor: pointer;
+  font-size: 1.3rem;
+  color: red;
+  position: absolute;
+  right: 1.5rem;
+  top: 1.5rem;
+  width: 30px;
+  height: 30px;
+  background: #F5F5F5;
+  border-radius: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modalContainer {
+  padding: 0 2rem;
+}
+
+.modalContainer .modalHeading {
+  font-size: 1.5rem;
+  margin-top: 1rem;
+  text-transform: inherit;
+  font-weight: 900;
+}
+.modalContainer .modalSubHeading {
+  font-size: 1rem;
+  margin: 1rem 0;
+  /* text-align: ; */
+  padding: 10px;
+  border-radius: 10px;
+  color: green;
+  text-transform: inherit;
+}
+
+.modalContainer .orGab {
+  font-size: 2rem;
+  color: #813fd6;
+}
+
+.chatBtn {
+  background: #2e722e;
+  color: #fff;
+  text-decoration: none;
+  padding: 18px;
+  border-radius: 30px;
+  transition: 0.5s all ease;
+}
+.chatBtn:hover {
+  background: #2e722e;
+  color: #fff;
+  text-decoration: none;
+  padding: 18px 25px;
+}
+
+.chatBtn .icon {
+  font-size: 2rem;
+  margin-right: 0.5rem;
+}
+
+.supportForm {
+  margin-top: 2rem;
+}
+
+.supportForm .formBody {
+  padding: 0rem 1rem 0rem 1rem;
+}
+.supportForm .formTitle {
+  font-weight: 800;
+  margin-bottom: 2rem;
+}
+
+.formTitle {
+  font-weight: 800;
+  margin-bottom: 2rem;
+}
+
+.supportForm input {
+  font-size: 1rem;
+}
+
+.supportForm textarea {
+  height: 100px;
+}
+
+.formContainer {
+  padding: 3rem;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  margin: 3rem auto;
+  background: #fff;
+}
+
+.formContainer .formControl input {
+  width: 100%;
+  padding: 10px;
+}
+
+.formContainer .formControl select {
+  width: 100%;
+  padding: 10px;
+  outline: none;
+}
+
+.buttonContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.buttonContainer .deletebtn {
+  background: #ea3e35;
+  color: #fff;
+  padding: 10px;
+  border: none;
+}
+
+select {
+  width: 100%;
+  padding: 15px;
+  border: solid 1px #ccc;
+  border-radius: 6px;
+  outline: none;
+}
+
+.showContainer {
+  padding-top: 2rem;
+  display: block;
+}
+
+.hideForm {
+  display: none;
+}
+
+.signup-container span {
+  color: red;
+}
+
+.input-group .password span {
+  color: #333;
+}
+
+.signup-container .showBtn {
+  width: 30%;
+  background: none;
+  color: #333;
+  font-weight: 400;
+  font-size: 1rem;
+  padding: 0;
+}
+
+.admiheader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.createBtn {
+  background: #813fd6;
+  padding: 10px 40px;
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.successAlert {
+  background: rgb(200, 244, 220);
+  padding: 10px;
+  color: rgb(8, 204, 60);
+  font-weight: 700;
+  border-radius: 6px;
+}
+
+.errAlert {
+  background: rgb(236, 167, 167);
+  padding: 10px;
+  color: red;
+  font-weight: 700;
+  border-radius: 6px;
+}
+
+
 @media only screen and (max-width: 1000px) {
+  .modalbody {
+    width: 80%;
+    height: auto;
+  }
   .form {
     width: 100%;
   }
@@ -542,6 +878,51 @@ form textarea {
 }
 
 @media only screen and (max-width: 768px) {
+
+  .buttonContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .modalbody {
+    width: 90%;
+    height: auto;
+  }
+  .proceedBtn {
+    background: #813fd6;
+    width: 100%;
+    margin: 1rem auto;
+    font-size: 0.7rem;
+    color: #fff;
+    padding: 13px 10px;
+    border-radius: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 900;
+  }
+
+  .modal-heading h5 {
+    margin-top: 1rem;
+    font-size: 0.7rem;
+  }
+
+  .userDetails {
+    width: 100%;
+  }
+  .userDetails .listFlex {
+    display: flex;
+    align-items: center;
+  }
+
+  .userDetails .listFlex .list {
+    font-size: 0.6rem !important;
+  }
+
+  .userDetails .listFlex p{
+    font-size: 0.7rem;
+  }
 
   .heroFlex .trackFormContainer {
     width: 100%;
@@ -556,16 +937,16 @@ form textarea {
 
 
   .heroFlex .content h1 {
-    font-size: 2.5rem;
+    font-size: 2rem;
+  }
+  .heroFlex .content p {
+    font-size: 1rem;
   }
 
   header {
     background: #333 !important;
   }
 
-  header a {
-    margin-bottom: 2rem !important;
-  }
   
   table { 
     width: 100%; 
@@ -585,6 +966,7 @@ form textarea {
     margin: 4rem auto;
     padding: 20px;
   }
+
   .formContainer {
     width: 100%;
     margin: 4rem auto;
@@ -679,8 +1061,178 @@ form textarea {
   text-align: center;
 }
 
+.adminMain {
+  display: flex;
+  padding-top: 2rem;
+}
+.adminMain article{
+  width: 100%;
+  padding: 3rem;
+}
+
+
+
+.sidebar {
+  width: 20%;
+  padding: 3rem 1rem;
+}
+
+.sidebar .nav-link{
+  font-size: 1.1rem;
+  padding: 0.8rem 2rem;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  border-radius: 6px;
+  transition: 0.5s all ease;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.sidebar .nav-link:hover {
+  background: #fff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  font-weight: 600;
+}
+.selected {
+  background: #fff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  font-weight: 600;
+}
+
+.sidebar .nav-link .icon {
+  margin-right: 10px;
+  font-size: 2rem;
+}
+
+.sidebar .logout {
+  color: #ff5100;
+  font-weight: 600;
+}
+
+.accHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+}
+
+.balanceCard {
+  background-color: #fff;
+  border-radius: 4px;
+  padding: 2rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  margin-bottom: 2rem;
+}
+.balanceCard .balance{
+  margin: 1.5rem 0;
+  font-weight: 600;
+}
+.balanceCard .link {
+  text-decoration: none;
+  color: #ff5100;
+}
+.balanceCard .title {
+  font-weight: 600;
+  font-size: 1rem;
+}
+.balanceCard .noTransaction {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.support {
+  margin-top: 2rem;
+}
+.modalForm {
+  padding: 2rem;
+}
+
+.modalForm .modalTitle {
+  margin: 1rem 0;
+}
+
+.taskBtn {
+  color: #813fd6;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.modalForm .formControl input {
+  width: 100%;
+  padding: 5px 15px;
+  border: solid 1px #cccc;
+  margin-top: 5px;
+  border-radius: 4px;
+  font-size: 1.3rem;
+}
+
+.balanceCard .formControl {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.balanceCard .formControl input {
+  width: 100%;
+  padding: 5px 15px;
+  border: solid 1px #cccc;
+  margin-top: 5px;
+  border-radius: 4px;
+  font-size: 1.3rem;
+}
+
+.successCard {
+  text-align: center;
+}
+
+.successCard .successIcon {
+  font-size: 8rem;
+  color: #025402;
+}
+.successCard h3 {
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+}
 
 @media only screen and (max-width: 768px) {
+
+  .adminMain {
+    display: flex;
+    flex-direction: column;
+    padding-top: 2rem;
+  }
+
+  .adminMain article {
+    width: 100%;
+    padding: 2rem;
+  }
+
+  .sidebar  {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 1rem;
+    width: 100%;
+  }
+
+  .sidebar .nav-link {
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    font-size: 0.8rem;
+    padding: 5px 10px;
+    font-weight: 600;
+    margin-right: 0.5rem;
+  }
+
+  .sidebar .nav-link .icon {
+    margin-right: 1px;
+    font-size: 1.1rem;
+  }
+
+  .sidebar .logout {
+    display: none;
+  }
 
   .paymentContainer {
     width: 100%;
@@ -716,4 +1268,37 @@ form textarea {
     font-size: 1.8rem;
   }
 
+  .accHeader {
+    display: block;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    background: transparent !important;
+    padding: 0px;
+  }
+
+  .accHeader h2 {
+    font-size: 1.2rem;
+    font-weight: 800;
+  }
+
+  .balanceCard {
+    background-color: #fff;
+    border-radius: 4px;
+    padding: 2rem 1rem;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    margin-bottom: 2rem;
+  }
+
+}
+
+.errorBadge {
+  background: #eccccc;
+  padding: 10px;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  border-radius: 10px;
+  color: red;
+  font-weight: 600;
+  text-align: center;
 }

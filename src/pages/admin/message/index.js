@@ -1,22 +1,76 @@
 import React from 'react'
 import Layout from '../../../components/AdminLayout'
-import Table from '../../../components/Table'
 import { users } from '../../../data'
 import Link from 'next/link'
+import { parseCookies } from '../../../config/parseCookies'
+import { API_URL, NEXT_URL } from '../../../config/index'
 
-const MessagePage = () => {
+const MessagePage = ({messages}) => {
   return (
     <Layout>
       <h3>All Messages</h3>
       <hr />
       <div className='tableCard'>
-        <Table
-          data={users}
-          path="/admin/message"
-        />
+      <table className='styled-table user-table'>
+      <thead>
+        <tr>
+          <th>S/N</th>
+          <th>First Name</th>
+          <th>Email</th>
+          <th>Title</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {messages.map((message, index) => (
+          <tr key={message?._id}>
+            <td>{index}</td>
+            <td>{message?.fullname}</td>
+            <td>{message?.email}</td>
+            <td>{message?.subject}</td>
+            <td>
+              <Link href={`/admin/message/${message._id}`}>
+                <button className='edit'>Read Message</button>
+              </Link>
+              <button onClick={() => handelDelete(message._id)} className='delete'>Delete</button>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
       </div>
     </Layout>
   )
+}
+
+
+export async function getServerSideProps({ req }) {
+  const { token } = parseCookies(req)
+
+  if (!token) {
+    return {
+      redirect: {
+        destination: '/signin',
+        permanent: false,
+      },
+    }
+  }
+
+  const resUser = await fetch(`${API_URL}/messages`, {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
+
+  const messages = await resUser.json()
+
+  return {
+    props: {
+      messages: messages,
+      token: token,
+    },
+  }
 }
 
 export default MessagePage
