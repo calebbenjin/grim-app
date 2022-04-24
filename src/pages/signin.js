@@ -58,7 +58,7 @@ const SigninPage = () => {
             <div className='signup'>
               <p>Signing up takes less than a minute</p>
 
-              <Link href='/signup'>
+              <Link href='/signup' passHref>
                 <a className='btn-signup'>Sign up</a>
               </Link>
             </div>

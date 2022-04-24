@@ -29,7 +29,7 @@ const MessagePage = ({messages}) => {
             <td>{message?.email}</td>
             <td>{message?.subject}</td>
             <td>
-              <Link href={`/admin/message/${message._id}`}>
+              <Link href={`/admin/message/${message._id}`} passHref>
                 <button className='edit'>Read Message</button>
               </Link>
               <button onClick={() => handelDelete(message._id)} className='delete'>Delete</button>

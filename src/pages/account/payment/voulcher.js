@@ -93,7 +93,7 @@ const Voulcher = ({ user }) => {
                     show={supportModal}
                     onClose={() => setSupportModal(false)}
                   />
-                  <p>Don't have a voulcher code?</p>
+                  <p>Don&lsquo;t have a voulcher code?</p>
                   <div onClick={handleSupport}>
                     <a className='taskBtn'>Request for your voulcher code!</a>
                   </div>

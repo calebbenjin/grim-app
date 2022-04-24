@@ -45,7 +45,7 @@ const Table = ({ data, path, token }) => {
             <td>{user.voulcherNum}</td>
             <td>{user.taskCode}</td>
             <td>
-              <Link href={`${path}/${user._id}`}>
+              <Link href={`${path}/${user._id}`} passHref>
                 <button className='edit'>Edit</button>
               </Link>
               <button onClick={() => handelDelete(user._id)} className='delete'>Delete</button>

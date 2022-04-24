@@ -9,7 +9,7 @@ const Header = () => {
     <header className='main-header'>
       <Navbar collapseOnSelect expand='lg' bg='light' variant='light'>
         <Container>
-          <Link href='/'>
+          <Link href='/' passHref>
             <Navbar.Brand>
               <Image src={logo} alt='logo' width='150' height='40' />
             </Navbar.Brand>

@@ -75,7 +75,7 @@ const TaskCodeModal = ({show, onClose, data}) => {
           </div>
           <div className='support'>
             <SupportModal show={supportModal} onClose={() => setSupportModal(false)} />
-            <p>Don't have a task code?</p>
+            <p>Don&lsquo;t have a task code?</p>
             <a className='taskBtn' onClick={handleSupport}>Request for task code!</a>
           </div>
         </form>

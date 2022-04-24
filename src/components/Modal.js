@@ -5,7 +5,7 @@ import { IoMdClose } from 'react-icons/io'
 const Modal = ({show, onClose, children}) => {
   const [ isBrowser, setIsBrowser ] = useState(false)
 
-  useEffect(() => setIsBrowser(true))
+  useEffect(() => setIsBrowser(true), [])
 
   const handleClose = (e) => {
     e.preventDefault()

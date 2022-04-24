@@ -10,28 +10,13 @@ import MobileSection from '../components/MobileSection'
 import CardSection from '../components/CardSection'
 
 export default function Home() {
-  
-
-  // useEffect(() => {
-  //   const resUser = await fetch(`${API_URL}/users`, {
-  //     method: 'GET',
-  //     headers: {
-  //       ContentType: 'application/json',
-  //       Authorization: `Bearer ${token}`,
-  //     },
-  //   })
-  
-  //   const users = await resUser.json()
-
-  //   console.log(users)
-  // })
 
   return (
     <>
       <header className='header'>
         <Navbar collapseOnSelect expand='lg'>
           <Container>
-            <Link href='/'>
+            <Link href='/' passHref>
               <Navbar.Brand>
                 <Image src={logo} alt='logo' width='150' height='40' />
               </Navbar.Brand>
@@ -42,24 +27,23 @@ export default function Home() {
               className='justify-content-end'
             >
               <Nav>
-                <Link href='/#'>
+                <Link href='/#' passHref>
                   <a>
-                    {' '}
                     <span className='live-updates'>Live updates</span>
                   </a>
                 </Link>
-                <Link href='/cart'>
+                <Link href='/cart' passHref>
                   <a> How it works </a>
                 </Link>
-                <Link href='/cart'>
+                <Link href='/cart' passHref>
                   <a> Help </a>
                 </Link>
-                <Link href='/signin'>
+                <Link href='/signin' passHref>
                   <a> Login </a>
                 </Link>
               </Nav>
               <Nav>
-                <Link href='/signup'>
+                <Link href='/signup' passHref>
                   <a className='btnStyle'>Sign up</a>
                 </Link>
               </Nav>

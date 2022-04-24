@@ -6,7 +6,6 @@ import { API_URL } from '../../config/index'
 import Image from 'next/image'
 import transImg from '../../public/transaction.png'
 import { formatToCurrency } from '../../helpers'
-// import { AuthContext } from '../../context/Authcontext'
 
 const Dashboard = ({user}) => {
 
@@ -43,7 +42,7 @@ const Dashboard = ({user}) => {
               <div className='noTransaction'>
                 <Image src={transImg} alt="Transactions Image" />
                 <h5>You have no transactions</h5>
-                <p>You haven't make any transactions yet!</p>
+                <p>You haven&lsquo;t make any transactions yet!</p>
               </div>
             </div>
           </div>

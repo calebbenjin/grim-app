@@ -14,21 +14,21 @@ const ChooseSection = () => {
           <Col lg="4">
             <div className="cards">
               <Image src={clockIcon} alt="icon" width="70%" />
-              <h2>We're Fast</h2>
+              <h2>We&lsquo;re Fast</h2>
               <p>95% of our transfers are ready in minutes.</p>
             </div>
           </Col>
           <Col lg="4">
             <div className="cards">
               <Image src={safeIcon} alt="icon" width="70%" />
-              <h2>We're Safe</h2>
+              <h2>We&lsquo;re Safe</h2>
               <p>We use industry-leading technology to protect your money.</p>
             </div>
           </Col>
           <Col lg="4">
             <div className="cards">
               <Image src={valueIcon} alt="icon" width="70%" />
-              <h2>We're Low-Cost</h2>
+              <h2>We&lsquo;re Low-Cost</h2>
               <p>We offer better exchange rates and lower fees than most conventional banks and money transfer services.</p>
             </div>
           </Col>

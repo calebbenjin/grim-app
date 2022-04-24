@@ -22,7 +22,7 @@ const TransactionsPage = () => {
               <div className='noTransaction'>
                 <Image src={transImg} alt="transactions Image" />
                 <h5>You have no transactions</h5>
-                <p>You haven't make any transactions yet!</p>
+                <p>You haven&lsquo;t make any transactions yet!</p>
               </div>
             </div>
           </div>

@@ -15,6 +15,6 @@ export default function NavLink({href, children}) {
   }
 
   return (
-    <Link href={href}>{React.cloneElement(children, {className})}</Link>
+    <Link href={href} passHref>{React.cloneElement(children, {className})}</Link>
   )
 }
